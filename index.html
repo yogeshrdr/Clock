@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clock</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <div class="clock-container">
+    <div class="clock-box">
+      <div class="clock">
+      <div class="number num1"><p class="text-num1">1</p></div>
+      <div class="number num2"><p class="text-num2">2</p></div>
+      <div class="number num3"><p class="text-num3">3</p></div> 
+      <div class="number num4"><p class="text-num4">4</p></div>
+      <div class="number num5"><p class="text-num5">5</p></div>
+      <div class="number num6"><p class="text-num6">6</p></div>
+      <div class="number num7"><p class="text-num7">7</p></div>
+      <span class="number num8"><p class="text-num8">8</p></span>
+      <div class="number num9"><p class="text-num9">9</p></div>
+      <div class="number num10"><p class="text-num10">10</p></div>
+      <div class="number num11"><p class="text-num11">11</p></div>
+      <div class="number num12"><p class="text-num12">12</p></div>
+      
+      <div class="hand hour" data-hour-hand></div>
+      <div class="hand minute" data-minute-hand></div>
+      <div class="hand second" data-second-hand></div>
+    </div>  
+    </div>
+  </div>
+
+
+  <script>
+      const hourHand = document.querySelector('[data-hour-hand]')
+      const minuteHand = document.querySelector('[data-minute-hand]')
+      const secondHand = document.querySelector('[data-second-hand]')
+
+      const time = () => {
+        const current_date = new Date();
+        const second = current_date.getSeconds() / 60;
+        const minutes = (second + current_date.getMinutes()) / 60;
+        const hours = (minutes + current_date.getHours()) / 12
+
+	      setTime(secondHand,second)
+	      setTime(minuteHand,minutes)
+	      setTime(hourHand,hours);
+    }
+
+    const setTime = (element, rotationRatio) => {
+   	element.style.setProperty('--rotation', rotationRatio * 360)
+  }
+
+setInterval(time, 1000);
+
+time();
+  </script>
+
+
+
+</body>
+</html>
